@@ -6,9 +6,9 @@ function create_password($password)
     return password_hash($password, PASSWORD_BCRYPT);
 }
 
-function check_password($password)
+function check_password($password,$hash)
 {
-    $hash ="password from database";
+//    $hash ="password from database";
 return password_verify($password, $hash);
 }
 
