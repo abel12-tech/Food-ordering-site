@@ -8,14 +8,14 @@ function create_password($password)
 
 function check_password($password)
 {
-    $hash = create_password("hello there");
-    return password_verify($password, $hash);
+    $hash ="password from database";
+return password_verify($password, $hash);
 }
 
-if (check_password("hello there")) {
-    echo ' correct password';
-} else {
-    echo " there is error in this password";
-}
+//if (check_password("hello there")) {
+//    echo ' correct password';
+//} else {
+//    echo " there is error in this password";
+//}
 
 
