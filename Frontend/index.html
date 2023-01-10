@@ -61,8 +61,9 @@
             </ul>
             <div class="user_option">
               <a class="cart_link text-white" href="#">
-               <i class="fa fa-cart-plus fa-2x" aria-hidden="true"></i>
+              
               </a>
+                <button type="button" class="btn bg-warning" data-toggle="modal" data-target="#cart"> <i class="fa fa-cart-plus fa-1.5x" aria-hidden="true"></i>(<span class="total-count"></span>)</button>
               
               <a href="" class="order_online">
                 Order Online
@@ -118,13 +119,7 @@
         </h2>
       </div>
 
-      <ul class="filters_menu">
-        <li class="active" data-filter="*">All</li>
-        <li data-filter=".burger">Burger</li>
-        <li data-filter=".pizza">Pizza</li>
-        <li data-filter=".pasta">Pasta</li>
-        <li data-filter=".fries">Fries</li>
-      </ul>
+      
 
       <div class="filters-content">
         <div class="row grid">
@@ -143,11 +138,12 @@
                   </p>
                   <div class="options">
                     <h6>
-                      50 Birr
+                      100 Birr
                     </h6>
-                    <a href="">
-                       <i class="fa fa-cart-plus " aria-hidden="true"></i>
-                    </a>
+                  
+                      <a href="#" data-name="Pasta" data-price="100" class="add-to-cart btn btn-primary"> <i class="fa fa-cart-plus " aria-hidden="true"></i></a>
+                  
+                    
                   </div>
                 </div>
               </div>
@@ -170,9 +166,8 @@
                     <h6>
                       100 Birr
                     </h6>
-                    <a href="">
-                       <i class="fa fa-cart-plus " aria-hidden="true"></i>
-                    </a>
+                    <a href="#" data-name="Burger" data-price="100" class="add-to-cart btn btn-primary"> <i class="fa fa-cart-plus " aria-hidden="true"></i></a>
+                  
                   </div>
                 </div>
               </div>
@@ -195,9 +190,10 @@
                     <h6>
                       100 Birr
                     </h6>
-                    <a href="">
-                       <i class="fa fa-cart-plus " aria-hidden="true"></i>
-                    </a>
+                  
+                      <a href="#" data-name="Beyayinet" data-price="100" class="add-to-cart btn btn-primary"> <i class="fa fa-cart-plus " aria-hidden="true"></i></a>
+                  
+                   
                   </div>
                 </div>
               </div>
@@ -366,6 +362,31 @@
  
 
 
+  <div class="modal fade" id="cart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Cart</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <table class="show-cart table">
+            
+          </table>
+          <div>Total price:<span class=" ml-1 mr-1 total-cart"></span> <em>Birr</em></div>
+        </div>
+       
+        <div class="modal-footer">
+          <button class="clear-cart btn btn-danger">Clear Cart</button>
+          <button type="button" class="btn btn-primary" >Order now</button>
+        </div>
+      </div>
+    </div>
+  </div> 
+  
+  
 
   <footer class="footer_section">
     <div class="container">
