@@ -9,12 +9,7 @@
     echo "<h4> This is dashboard </h4>";
 
 
-    echo " Orders <br>
-     <table>
-     <th>Order</th>
-     </table>
-    
-    ";
+    include('admin_home.php');
 
 
 

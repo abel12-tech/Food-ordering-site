@@ -22,6 +22,7 @@ include ('utils.php');
         $sql = "select *from users where username = '$username'";
         $result = mysqli_query($connect, $sql);
 
+
 if (mysqli_num_rows($result) > 0) {
     // OUTPUT DATA OF EACH ROW
 while($row = mysqli_fetch_assoc($result)) {
@@ -38,6 +39,9 @@ else{
     echo "Your password is not correct !";
 }
 }
+
+      
+ 
 ?>  
 
 
