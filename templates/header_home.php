@@ -4,4 +4,4 @@
 	<title>OrderMyFood</title>
 </head>
 <body>
-	<a href="#">Logout</a> 
+	<a href="logout.php">Logout</a> 
