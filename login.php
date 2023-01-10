@@ -3,10 +3,10 @@
 
 <?php      
      include ('db_connection/db_connection.php');
-
-     session_start();    
-     include ('db_connection/db_connection.php');  
-
+include ('utils.php');
+     session_start();
+    $hashed_password = "";
+    $id = 0;
     $username = $_POST['username'];  
     $password = $_POST['password'];  
 
@@ -19,38 +19,25 @@
 
         $password = mysqli_real_escape_string($connect, $password);
 
-        $sql = "select *from users where username = '$username' and password = '$password'";
+        $sql = "select *from users where username = '$username'";
         $result = mysqli_query($connect, $sql);
-        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-        $count = mysqli_num_rows($result);
 
-        if($count == 1){
+if (mysqli_num_rows($result) > 0) {
+    // OUTPUT DATA OF EACH ROW
+while($row = mysqli_fetch_assoc($result)) {
+ $hashed_password =  $row["password"];
+ $id = $row['id'];
+}
 
-            header('location: home.php');
-        }
-        else{
+if(check_password($password,$hashed_password)){
 
-			echo "Incorrect username or password";
-
-        }
-
-        $password = mysqli_real_escape_string($connect, $password);  
-      
-        $sql = "select *from users where username = '$username' and password = '$password'";  
-        $result = mysqli_query($connect, $sql);  
-
-        if ($result->num_rows >0 ) {
-            $row = mysqli_fetch_assoc($result);
-            $_SESSION['id']= $row['id'];
-            
-            header('location: home.php');
-        }else{
-         echo "wrong";
-         
-        }
- 
-
-  
+$_SESSION['id']= $id;
+header('location: home.php');
+}
+else{
+    echo "Your password is not correct !";
+}
+}
 ?>  
 
 
