@@ -5,7 +5,7 @@
 
 var shoppingCart = (function() {
     // =============================
-    // Private methods and propeties
+    // Private methods and properties
     // =============================
     cart = [];
     

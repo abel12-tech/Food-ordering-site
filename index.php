@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <?php include ('db_connection/db_connection.php'); 
 
 
@@ -12,7 +11,7 @@ $foods = mysqli_fetch_all($result, MYSQLI_ASSOC)
 ?>
 
 <?php include ('templates/header.php') ?>
-
+<?php include('templates/hero.php') ?>
 
     <section class="food_section layout_padding-bottom">
     <div class="container">
@@ -47,7 +46,8 @@ $foods = mysqli_fetch_all($result, MYSQLI_ASSOC)
                     <?php echo htmlspecialchars($food['price']); ?> Birr
                     </h6>
                   
-                      <a href="#" 
+                      <a href="#"
+                         data-food_id = "<?php echo htmlspecialchars($food['id']);  ?>"
                       data-name="<?php echo htmlspecialchars($food['name']); ?>" 
                       data-price="<?php echo htmlspecialchars($food['price']); ?>" 
                       class="add-to-cart btn btn-primary"> <i class="fa fa-cart-plus " aria-hidden="true"></i></a>
@@ -93,7 +93,7 @@ $foods = mysqli_fetch_all($result, MYSQLI_ASSOC)
        
         <div class="modal-footer">
           <button class="clear-cart btn btn-danger">Clear Cart</button>
-          <a href="order.html"> <button type="button" class="btn btn-primary" >Order now</button></a>
+          <a href="order.php"> <button type="button" class="btn btn-primary" >Order now</button></a>
          
         </div>
       </div>
