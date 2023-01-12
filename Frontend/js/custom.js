@@ -10,10 +10,11 @@ var shoppingCart = (function() {
     cart = [];
     
     // Constructor
-    function Item(name, price, count) {
+    function Item(name, price, count,food_id) {
       this.name = name;
       this.price = price;
       this.count = count;
+      this.food_id = food_id;
     }
     
     // Save cart
@@ -25,6 +26,7 @@ var shoppingCart = (function() {
     function loadCart() {
       cart = JSON.parse(sessionStorage.getItem('shoppingCart'));
     }
+
     if (sessionStorage.getItem("shoppingCart") != null) {
       loadCart();
     }
@@ -36,7 +38,7 @@ var shoppingCart = (function() {
     var obj = {};
     
     // Add to cart
-    obj.addItemToCart = function(name, price, count) {
+    obj.addItemToCart = function(name, price, count,food_id) {
       for(var item in cart) {
         if(cart[item].name === name) {
           cart[item].count ++;
@@ -44,7 +46,7 @@ var shoppingCart = (function() {
           return;
         }
       }
-      var item = new Item(name, price, count);
+      var item = new Item(name, price, count,food_id);
       cart.push(item);
       saveCart();
     }
@@ -104,6 +106,14 @@ var shoppingCart = (function() {
         totalCart += cart[item].price * cart[item].count;
       }
       return Number(totalCart.toFixed(2));
+    }
+
+    obj.foodID = function() {
+        var foodID;
+        for(var item in cart) {
+            totalCart += cart[item].price * cart[item].count;
+        }
+        return Number(totalCart.toFixed(2));
     }
   
     // List cart
@@ -175,6 +185,7 @@ var shoppingCart = (function() {
     $('.total-cart').html(shoppingCart.totalCart());
     $('.total-count').html(shoppingCart.totalCount());
   }
+
   
   // Delete item button
   
@@ -207,4 +218,3 @@ var shoppingCart = (function() {
   });
   
   displayCart();
-  
