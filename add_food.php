@@ -51,3 +51,5 @@ if (isset($_POST['submit']) && isset($_FILES['image'])) {
  }else{
   echo "You are not allowed to add Food";
  }
+
+ 

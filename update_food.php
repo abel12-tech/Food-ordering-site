@@ -59,7 +59,7 @@ if (isset($_POST['update']) && isset($_FILES['image']) ) {
  }else{
 	echo  "You are not allowed to update";
  }
-?>
+?> 
 
 
 <!DOCTYPE html>
