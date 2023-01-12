@@ -47,7 +47,7 @@ mysqli_close($connect);
           <?php echo htmlspecialchars($food['price']); ?> Birr
           </h6>
         
-           <a href="update_food.html?id=<?php echo $food['id']?>">Update</a>  |  <a href="delete_food.php?id=<?php echo $food['id']?>">Delete</a>
+           <a href="update_food.php?id=<?php echo $food['id']?>">Update</a>  |  <a href="delete_food.php?id=<?php echo $food['id']?>">Delete</a>
           
         </div>
       </div>

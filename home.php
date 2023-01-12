@@ -1,7 +1,7 @@
 <?php  session_start();  ?>
 
 <!DOCTYPE html>
-<html>
+<html> 
 
 <?php  
  if($_SESSION['id']){

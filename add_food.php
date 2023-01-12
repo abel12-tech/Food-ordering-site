@@ -1,5 +1,5 @@
 <?php 
-
+ if($_SESSION['id']){
 
 if (isset($_POST['submit']) && isset($_FILES['image'])) {
 	include ('db_connection/db_connection.php');
@@ -47,3 +47,6 @@ if (isset($_POST['submit']) && isset($_FILES['image'])) {
 }else {
 	header("Location: home.php");
 }
+ }else{
+  echo "You are not allowed to add Food";
+ }
