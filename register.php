@@ -8,7 +8,7 @@ $password = create_password($_POST['password']);
     $sql = "INSERT INTO users (username,password)
 VALUES ('$username', '$password')";
     $result = mysqli_query($connect, $sql);
-    echo $result;
+    header("Location: home.php");
 
 }
 catch (Exception $e){

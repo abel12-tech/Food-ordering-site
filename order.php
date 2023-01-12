@@ -1,34 +1,52 @@
 <!DOCTYPE html>
 <html>
 <?php
-try{
-   $food_array = $_POST['food_id'];
-   $quantity_array  = $_POST['quantity'];
-    $food_array= explode (",", $food_array);
-    $quantity_array = explode(",",$quantity_array);
-    $orderd_food = array_combine($food_array,$quantity_array);
-    print_r($orderd_food);
-}
-catch (Exception $e){
-    echo "There is an error during ordering your food ";
-}
-$order_id = 5;
-foreach ($orderd_food as $food_id=> $quan){
-//    echo "$order_id  -- $food_id => $quan <br>";
-}
-
-
-?>
-
-<?php include ('db_connection/db_connection.php');
+//include('db_connection/db_connection.php');
+//$order_id = 0;
+//
+//   $food_array = $_POST['food_id'];
+//   $quantity_array  = $_POST['quantity'];
+//    $food_array= explode (",", $food_array);
+//    $quantity_array = explode(",",$quantity_array);
+//    $ordered_food = array_combine($food_array,$quantity_array);
+//
+//
+//
+//    $name = $_POST['name'];
+//    $phone_number = $_POST['phone_number'];
+//    $city = $_POST['city'];
+//    $address = $_POST['address'];
+//    $arr_date = $_POST['arr_date'];
+//
+//    $sql = "INSERT INTO orders(name,phone_number,city,address,arr_date)
+//				        VALUES('$name', '$phone_number','$city','$address','$arr_date')";
+//
+//
+//    mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+//    $mysqli = new mysqli("localhost", "baty", "baty0393", "food_ordering");
+//    $mysqli->query($sql);
+//   $order_id = $mysqli->insert_id;
 
 //
-//$sql = "SELECT * FROM foods ORDER BY id DESC ";
-//$result = mysqli_query($connect,  $sql);
-//$foods = mysqli_fetch_all($result, MYSQLI_ASSOC)
+//foreach($food_array as $item){
+//
+//
+//    $food_quantity = $ordered_food[$item];
+//    $food_id = $item;
+//    $sql = "INSERT INTO ordered_food(food_id,order_id,food_quantity)
+//			        VALUES('$food_id', '$order_id','$food_quantity')";
+//    $mysqli->query($sql);
+//
+//}
 
 
 ?>
+
+
+
+
+
+
 
 <?php include ('templates/header.php') ?>
 
@@ -54,26 +72,31 @@ foreach ($orderd_food as $food_id=> $quan){
         <div class="row">
             <div class="col-md-6">
                 <div class="form_container">
-                    <form action="order.php" method="POST">
+                    <form action="orders.php" method="POST">
                         <div>
-                            <input type="text" class="form-control" placeholder="Your Name" />
+                            <input type="text" class="form-control" name="name" placeholder="Your Name" required/>
                         </div>
                         <div>
-                            <input type="text" class="form-control" placeholder="Phone Number" />
+                            <input type="text" class="form-control"  name="phone_number" placeholder="Phone Number" required/>
                         </div>
                         <div>
-                            <input type="email" class="form-control" placeholder="City" />
+                            <input type="city" class="form-control" name="city" placeholder="City" value="Jimma"/>
                         </div>
-                        <input type="text" class="form-control" placeholder="Address" />
+                        <input type="text" class="form-control" name="address" placeholder="Address" required/>
                         <div>
                         </div>
-                        <input type="text" class="form-control" placeholder="Street name" />
+                        <input type="date" name="arr_date" class="form-control" required/>
                         <div>
-
                         </div>
+                        <input type="hidden" class="form-control  quantity" name="quantity" />
                         <div>
-                            <input type="date" class="form-control">
                         </div>
+                        <input type="hidden" class="form-control food_id" name="food_id" placeholder="Street name" />
+                        <div>
+                        </div>
+                </div>
+                <input type="hidden" class="form-control total_food_price" name="price" />
+                <div>
                         <div class="btn_box">
                             <button class="btn btn-warning">
                                 Order Now
@@ -91,9 +114,7 @@ foreach ($orderd_food as $food_id=> $quan){
 
 
 <?php include ('templates/footer.php') ?>
-<script>
-    document.getElementById("food_id").value = "1,3,5,6,4";
-    document.getElementById("quantity").value = "4,6,7,7,4";
+
 
     <script src="js/jquery-3.4.1.min.js"></script>
 
@@ -102,7 +123,7 @@ foreach ($orderd_food as $food_id=> $quan){
 <script src="js/bootstrap.js"></script>
 
 <script src="js/custom.js"></script>
-</script>
+
 
 
 </html>
