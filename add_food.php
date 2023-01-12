@@ -1,4 +1,5 @@
 <?php 
+session_start();
  if($_SESSION['id']){
 
 if (isset($_POST['submit']) && isset($_FILES['image'])) {
@@ -15,7 +16,7 @@ if (isset($_POST['submit']) && isset($_FILES['image'])) {
 	$error = $_FILES['image']['error'];
 
 	if ($error === 0) {
-		if ($img_size > 125000) {
+		if ($img_size > 1000000) {
 			echo "Sorry, your file is too large.";
 		    // header("Location: index.php?error=$em");
 		}else {

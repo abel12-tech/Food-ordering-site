@@ -13,7 +13,7 @@ $foods = mysqli_fetch_all($result, MYSQLI_ASSOC)
 <?php include ('templates/header.php') ?>
 <?php include('templates/hero.php') ?>
 
-    <section class="food_section layout_padding-bottom">
+    <section class="food_section layout_padding-bottom" id="menu">
     <div class="container">
       <div class="heading_container heading_center">
         <h2>

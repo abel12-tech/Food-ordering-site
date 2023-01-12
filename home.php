@@ -6,7 +6,7 @@
 <?php  
  if($_SESSION['id']){
     include ('templates/header_home.php');
-    echo "<h4> This is dashboard </h4>";
+
 
 
     include('admin_home.php');

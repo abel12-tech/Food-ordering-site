@@ -22,39 +22,53 @@ mysqli_close($connect);
     <title>OrderMyFood</title>
 </head>
 <body>
-    
-<a href="add_food.html">Add Food</a>
 
 
 
-<?php foreach($foods as $food){ ?>
 
-<div class="col-sm-6 col-lg-4 all pizza">
-  <div class="box">
-    <div>
-      <div class="img-box">
-        <img src="uploads/<?=$food['image_url']?>" alt="Food image">
-      </div>
-      <div class="detail-box">
-        <h5>
-        <?php echo htmlspecialchars($food['name']); ?>
-        </h5>
-        <p>
-        <?php echo htmlspecialchars($food['description']); ?>
-        </p>
-        <div class="options">
-          <h6>
-          <?php echo htmlspecialchars($food['price']); ?> Birr
-          </h6>
+		<!-- MAIN -->
+	
+		<main>
+			<div class="head-title">
+			<div class="table-data">
+				<div class="order">
+					<div class="head">
+						<h3>List of Foods</h3>
+					</div>
+
+
+                      <div class="table-data border-0">
+                        <?php foreach($foods as $food){ ?>
+                        <div class="card mt-5" style="width: 18rem;">
+                            <img src="uploads/<?=$food['image_url']?>" class="card-img-top" alt="Food Image">
+                            <div class="card-body">
+                              <h5 class="card-title"><?php echo htmlspecialchars($food['name']); ?></h5>
+                              <h6><?php echo htmlspecialchars($food['price']); ?> Birr</h6>
+                              <p class="card-text"><?php echo htmlspecialchars($food['description']); ?></p>
+                              <a  href="update_food.php?id=<?php echo $food['id']?>" class="btn btn-primary">Update</a> <span><a href="delete_food.php?id=<?php echo $food['id']?>" class="btn btn-danger">Delete</a></span>
+                            </div>
+                          </div>
+                          <?php } ?>
+
+
+                      </div>
+                    
+				</div>
+			</div>
+
+
+
+
+      
+		</main>
         
-           <a href="update_food.php?id=<?php echo $food['id']?>">Update</a>  |  <a href="delete_food.php?id=<?php echo $food['id']?>">Delete</a>
-          
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+        
+        <!-- MAIN -->
+	</section>
+	<!-- CONTENT -->
 
-<?php } ?>
+
+
+
 </body>
 </html>
