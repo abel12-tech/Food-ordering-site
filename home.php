@@ -2,7 +2,7 @@
 
 <!DOCTYPE html>
 <html> 
-
+ 
 <?php  
  if($_SESSION['id']){
     include ('templates/header_home.php');

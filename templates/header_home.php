@@ -1,3 +1,8 @@
+
+<?php  session_start();  
+
+
+?>
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +13,7 @@
 	<link rel="stylesheet" href="./Frontend/restrauntDashboard/style.css">
 	<link rel="stylesheet" href="./Frontend/css/bootstrap.css">
 
-	<title>OMF | Restaurant</title>
+	<title>OrderMyFood | Restaurant</title>
 </head>
 <body>
 
@@ -16,7 +21,11 @@
 	<section id="sidebar">
 		<a href="#" class="brand">
 			<i class='bx bxs-smile'></i>
-			<span class="text">Admin name</span>
+			<span class="text"> <?php 
+			 if($_SESSION['username']){
+			echo $_SESSION['username']; 
+			 }
+			?> </span>
 		</a>
 		<ul class="side-menu top">
 			<li class="active">
