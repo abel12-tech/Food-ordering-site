@@ -8,7 +8,12 @@ $orders = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 
 mysqli_free_result($result);
-mysqli_close($connect);
+//mysqli_close($connect);
+
+
+
+
+
 
 ?>
     <?php include ('templates/header_home.php');
@@ -28,14 +33,16 @@ mysqli_close($connect);
 								<th>customer Name</th>
 								<th> Order Date</th>
                                 <th> Ordered Foods</th>
-								<th>Status</th>
+								<th>Quantity</th>
+                                <th>Price</th>
 							</tr>
 						</thead>
 						<tbody>
                         <?php
 
                         foreach($orders as $order)
-                        { $i++?>
+                        {
+                           ?>
 							<tr>
 								<td><?php echo $order['name']?></td>
 								<td><?php echo $order['arr_date']?></td>
@@ -47,47 +54,66 @@ mysqli_close($connect);
                                     $sql = "SELECT * FROM ordered_food WHERE order_id='$order_id'";
                                     $result = mysqli_query($connect,  $sql);
                                     $ordered_food = mysqli_fetch_all($result, MYSQLI_ASSOC);
-
-
                                     mysqli_free_result($result);
 
-                                   mysqli_close($connect);
-          $food_id_array = [];
+//                                   mysqli_close($connect);
+          $food_id_array = array();
 foreach ($ordered_food as $item){
-     $food_id_array +=  $item['food_id'];
+     array_push($food_id_array,$item['food_id']);
 }
 
+$sql = "SELECT * FROM foods ORDER BY id DESC ";
+$result = mysqli_query($connect,  $sql);
+$foods = mysqli_fetch_all($result, MYSQLI_ASSOC);
+mysqli_free_result($result);
+mysqli_close($connect);
+for($i=0;$i<count($food_id_array); $i++){
+    $item = $food_id_array[$i];
+    foreach($foods as $food){
+        if( $item == $food['id']){
+              $food_name = $food['name'] ;
 
+           echo "$food_name ";
+           if(!($i==count($food_id_array)-1 )){
+               echo ",";
+           }
+
+        }
+ }
+
+}
 
                                     ?>
 
 
                                 </td>
-								<td><span class="status completed">Completed</span></td>
+								<td><?php
+                                    for($i=0;$i<count($food_id_array); $i++){
+                                        $item = $food_id_array[$i];
+                                        foreach($ordered_food as $food){
+
+                                            if( $item == $food['food_id']){
+                                                $quantity = $food['food_quantity'] ;
+
+                                                echo "$quantity ";
+                                                if(!($i==count($food_id_array)-1 )){
+                                                    echo ",";
+                                                }
+
+                                            }
+                                        }
+
+                                    }
+
+                                    ?></td>
+                                <td><?php  $price = $order['price'] ;
+
+                                 echo "$price Birr";
+                                ?></td>
 							</tr>
 
 
 							<?php }?>
-<!--							<tr>-->
-<!--								<td>Bcvbnjmk</td>-->
-<!--								<td>01-10-2021</td>-->
-<!--								<td><span class="status pending">Pending</span></td>-->
-<!--							</tr>-->
-<!--							<tr>-->
-<!--								<td>Bcvbnjmk</td>-->
-<!--								<td>01-10-2021</td>-->
-<!--								<td><span class="status process">Process</span></td>-->
-<!--							</tr>-->
-<!--							<tr>-->
-<!--								<td>Bcvbnjmk</td>-->
-<!--								<td>01-10-2021</td>-->
-<!--								<td><span class="status pending">Pending</span></td>-->
-<!--							</tr>-->
-<!--							<tr>-->
-<!--								<td>Bcvbnjmk</td>-->
-<!--								<td>01-10-2021</td>-->
-<!--								<td><span class="status completed">Completed</span></td>-->
-<!--							</tr>-->
 						</tbody>
 					</table>
 				</div>

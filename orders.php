@@ -37,4 +37,4 @@ foreach($food_array as $item){
     $mysqli->query($sql);
 
 }
-header("Location: home.php");
+header("Location: index.php");
