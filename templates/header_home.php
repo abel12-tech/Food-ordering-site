@@ -41,7 +41,7 @@
 				</a>
 			</li>
 			<li>
-				<a href="orderedFood.html">
+				<a href="ordered.php">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Orders</span>
 				</a>
