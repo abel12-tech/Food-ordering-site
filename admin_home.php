@@ -50,7 +50,6 @@ mysqli_close($connect);
                           </div>
                           <?php } ?>
 
-
                       </div>
                     
 				</div>

@@ -15,7 +15,8 @@
 
     include ('templates/footer_home.php');
  }else{
-    echo "You are not allowed";
+   header("Location: 404.html");
+     
  }
 
 ?>

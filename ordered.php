@@ -10,11 +10,6 @@ $orders = mysqli_fetch_all($result, MYSQLI_ASSOC);
 mysqli_free_result($result);
 //mysqli_close($connect);
 
-
-
-
-
-
 ?>
     <?php include ('templates/header_home.php');
 

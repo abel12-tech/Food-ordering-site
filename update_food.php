@@ -6,20 +6,23 @@ include ('db_connection/db_connection.php');
 
 $food_id = $_GET['id'];
 
-
 $sql = "select * from foods where id = $food_id";
 $result = mysqli_query($connect, $sql);
+
 $food = mysqli_fetch_assoc($result);
+
+if($food){
 
 $name = $food['name'];
 $price = $food['price'];
 $description = $food['description'];
 $image = $food['image_url'];
-
+}else{
+	echo "nooo";
+}
 
 if (isset($_POST['update']) && isset($_FILES['image']) ) {
 	
-
 	$name = mysqli_real_escape_string($connect, $_POST['name']);
     $price = mysqli_real_escape_string($connect, $_POST['price']);
 	$description = mysqli_real_escape_string($connect, $_POST['description']);
@@ -36,12 +39,11 @@ if (isset($_POST['update']) && isset($_FILES['image']) ) {
 	$allowed_exs = array("jpg", "jpeg", "png"); 
 
 	if (in_array($img_ex_lc, $allowed_exs)) {
-		$new_img_name = uniqid("IMG-", true).'.'.$img_ex_lc;
-		$img_upload_path = "uploads/".$new_img_name;
+		$img_upload_path = "uploads/".$img_name;
 		move_uploaded_file($tmp_name, $img_upload_path);
 
 		// Update
-		$sql = "UPDATE foods SET id=$food_id, name='$name', price='$price', description='$description', image_url='$new_img_name' WHERE id=$food_id"; 
+		$sql = "UPDATE foods SET id=$food_id, name='$name', price='$price', description='$description', image_url='$img_name' WHERE id=$food_id"; 
 
 		mysqli_query($connect, $sql);
 		if ($result){
@@ -57,7 +59,7 @@ if (isset($_POST['update']) && isset($_FILES['image']) ) {
 	}
 }
  }else{
-	echo  "You are not allowed to update";
+	header("Location: 404.html");
  }
 ?> 
 
@@ -69,9 +71,10 @@ if (isset($_POST['update']) && isset($_FILES['image']) ) {
 
 
 <div class="container">
+<?php if($food): ?>
 <div class="table-data">
 				<div class="order">
-<div class="head">
+<div class="head"> 
 						<h3>Update Food</h3>
 					</div>
                     <form  method="POST" enctype="multipart/form-data" class="add-food">
@@ -101,7 +104,13 @@ if (isset($_POST['update']) && isset($_FILES['image']) ) {
                       </form>
 				</div>
 </div>
+<?php else: ?>
+	<h3>No such food</h3>
+
+	<?php endif; ?>
 </div>
+
+
 
 <?php  include ('templates/footer_home.php'); ?>
 </html>

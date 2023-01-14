@@ -26,13 +26,12 @@ if (isset($_POST['submit']) && isset($_FILES['image'])) {
 			$allowed_exs = array("jpg", "jpeg", "png"); 
 
 			if (in_array($img_ex_lc, $allowed_exs)) {
-				$new_img_name = uniqid("IMG-", true).'.'.$img_ex_lc;
-				$img_upload_path = "uploads/".$new_img_name;
+				$img_upload_path = "uploads/".$img_name;
 				move_uploaded_file($tmp_name, $img_upload_path);
 
 				// Insert into Database
 				$sql = "INSERT INTO foods(name, price, description, image_url) 
-				        VALUES('$name', '$price', '$description', '$new_img_name')";
+				        VALUES('$name', '$price', '$description', '$img_name')";
 				mysqli_query($connect, $sql);
 				header("Location: home.php");
 			}else {
@@ -49,7 +48,7 @@ if (isset($_POST['submit']) && isset($_FILES['image'])) {
 	header("Location: home.php");
 }
  }else{
-  echo "You are not allowed to add Food";
+	header("Location: 404.html");
  }
 
  
