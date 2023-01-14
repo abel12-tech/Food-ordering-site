@@ -11,15 +11,10 @@ $result = mysqli_query($connect, $sql);
 
 $food = mysqli_fetch_assoc($result);
 
-if($food){
-
 $name = $food['name'];
 $price = $food['price'];
 $description = $food['description'];
 $image = $food['image_url'];
-}else{
-	echo "nooo";
-}
 
 if (isset($_POST['update']) && isset($_FILES['image']) ) {
 	

@@ -1,7 +1,17 @@
 
-<?php  session_start();  
+<?php 
+session_start(); 
 
 
+include ('db_connection/db_connection.php');
+
+$user_id = $_SESSION['id'];
+
+$sql = "select * from users where id = $user_id";
+$result = mysqli_query($connect, $sql);
+
+$user = mysqli_fetch_assoc($result);
+ 
 ?>
 <head>
 	<meta charset="UTF-8">
@@ -16,17 +26,17 @@
 	<title>OrderMyFood | Restaurant</title>
 </head>
 <body>
-
+ 
 	<!-- SIDEBAR -->
 	<section id="sidebar">
-		<a href="#" class="brand">
+		<p class="brand">
 			<i class='bx bxs-smile'></i>
 			<span class="text"> <?php 
-			 if($_SESSION['username']){
-			echo $_SESSION['username']; 
-			 }
+			
+			echo $user['username']; 
+			 
 			?> </span>
-		</a>
+		</p>
 		<ul class="side-menu top">
 			<li class="active">
 				<a href="home.php">
