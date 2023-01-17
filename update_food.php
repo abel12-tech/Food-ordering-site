@@ -16,7 +16,7 @@ $price = $food['price'];
 $description = $food['description'];
 $image = $food['image_url'];
 
-if (isset($_POST['update']) && isset($_FILES['image']) ) {
+if (isset($_POST['update']) && isset($_FILES['image']) && !empty(isset($_FILES['image']))) {
 	
 	$name = mysqli_real_escape_string($connect, $_POST['name']);
     $price = mysqli_real_escape_string($connect, $_POST['price']);
@@ -41,13 +41,15 @@ if (isset($_POST['update']) && isset($_FILES['image']) ) {
 		$sql = "UPDATE foods SET id=$food_id, name='$name', price='$price', description='$description', image_url='$img_name' WHERE id=$food_id"; 
 
 		mysqli_query($connect, $sql);
-		if ($result){
-			header("Location: home.php");
+		header("Location: home.php");
+		// if ($result){
+		// 	header("Location: home.php");
+		// 	// echo "yeah";
 
-		}else{
-			die(mysqli_error($connect));
+		// }else{
+		// 	die(mysqli_error($connect));
 
-		}
+		// }
 		
 	}else {
 		echo "You can't upload files of this type";
@@ -76,23 +78,23 @@ if (isset($_POST['update']) && isset($_FILES['image']) ) {
             
                         <div class="form-group">
                           <label for="food-name">Food</label>
-						  <input type="text" name="name" class="form-control" value="<?php echo "$name"; ?>">
+						  <input type="text" name="name" class="form-control" value="<?php echo htmlspecialchars("$name"); ?>">
                         </div>
                         <div class="form-group">
                           <label for="price">Price</label>
-                          <input type="number" class="form-control" name="price" value="<?php echo "$price"; ?>" >
+                          <input type="number" class="form-control" name="price" value="<?php echo htmlspecialchars("$price"); ?>" >
                         </div>
 
                         <div class="form-group">
                           <label for="food-name">Description</label>
 
-						  <textarea type="text" class="form-control" name="description" value="<?php echo "$description"; ?>"> <?php echo "$description"; ?></textarea>
+						  <textarea type="text" class="form-control" name="description" value="<?php echo htmlspecialchars("$description"); ?>"> <?php echo htmlspecialchars("$description"); ?></textarea>
                         </div>
 
                         <div class="form-group">
 						Current image: <?php echo "$image"; ?>
                             <label for="image">Image</label>
-                            <input type="file" class="form-control"  name="image" value="<?php echo "$image"; ?>"> 
+                            <input type="file" class="form-control"  name="image" value="<?php echo htmlspecialchars("$image"); ?>"> 
 
                         </div>
 						<input type="submit" name="update" value="Save" class="btn btn-primary mt-4"></input>

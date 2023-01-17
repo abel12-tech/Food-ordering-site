@@ -52,3 +52,9 @@ if (isset($_POST['submit']) && isset($_FILES['image'])) {
  }
 
  
+// Security check
+
+// 1. cross site scripting attacks
+//    e.g. how to attach: <script>window.location="https://www.facebook.com/"</script>
+//    prevent: use htmlspecialchars - in converts everything to html entities instead
+
