@@ -1,6 +1,6 @@
 <?php 
 session_start();
- if($_SESSION['id']){
+ if($_SESSION['id']){ 
 
 if (isset($_POST['submit']) && isset($_FILES['image'])) {
 	include ('db_connection/db_connection.php');
@@ -51,10 +51,5 @@ if (isset($_POST['submit']) && isset($_FILES['image'])) {
 	header("Location: 404.html");
  }
 
- 
-// Security check
 
-// 1. cross site scripting attacks
-//    e.g. how to attach: <script>window.location="https://www.facebook.com/"</script>
-//    prevent: use htmlspecialchars - in converts everything to html entities instead
 
