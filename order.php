@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <?php
+include ('limit_traffic.php');
 //include('db_connection/db_connection.php');
 //$order_id = 0;
 //
@@ -90,7 +91,13 @@
                         </div>
                         <input type="hidden" class="form-control  quantity" name="quantity" />
                         <div>
+                        <div>
+                            <input type="text" class="form-control"  name="transaction_id" placeholder="Transaction Id" required/>
                         </div>
+                        </div>
+
+
+
                         <input type="hidden" class="form-control food_id" name="food_id" placeholder="Street name" />
                         <div>
                         </div>

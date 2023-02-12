@@ -10,7 +10,7 @@
              <a href="">
                <i class="fa fa-map-marker" aria-hidden="true"></i>
                <span>
-                 Location
+                 Jimma
                </span>
              </a>
              <a href="">
@@ -34,7 +34,7 @@
              OrderMyFood
            </a>
            <p>
-             Necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with
+            Order food, while working
            </p>
            <div class="footer_social">
              <a href="">
@@ -60,9 +60,7 @@
          <p>
            Everyday
          </p>
-         <p>
-           10.00 Am -10.00 Pm
-         </p>
+
        </div>
      </div>
    

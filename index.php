@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
-<?php include ('db_connection/db_connection.php'); 
+
+<?php 
+include ('limit_traffic.php');
+include ('db_connection/db_connection.php'); 
 
 
 $sql = "SELECT * FROM foods ORDER BY id DESC ";

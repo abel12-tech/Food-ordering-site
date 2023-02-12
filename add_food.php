@@ -1,4 +1,7 @@
 <?php 
+include ('limit_traffic.php');
+
+
 session_start();
  if($_SESSION['id']){ 
 

@@ -1,4 +1,5 @@
 <?php
+include ('limit_traffic.php');
 include ('db_connection/db_connection.php');
 
 
@@ -30,17 +31,18 @@ mysqli_free_result($result);
                                 <th> Ordered Foods</th>
 								<th>Quantity</th>
                                 <th>Price</th>
+                                <th>Transaction id</th>
 							</tr>
 						</thead>
 						<tbody>
                         <?php
 
                         foreach($orders as $order)
-                        {
+                        { 
                            ?>
 							<tr>
-								<td><?php echo $order['name']?></td>
-								<td><?php echo $order['arr_date']?></td>
+								<td><?php echo htmlspecialchars($order['name']);?></td>
+								<td><?php echo htmlspecialchars($order['arr_date']);?></td>
                                 <td>
                                     <?php
                                     include ('db_connection/db_connection.php');
@@ -105,6 +107,9 @@ for($i=0;$i<count($food_id_array); $i++){
 
                                  echo "$price Birr";
                                 ?></td>
+
+
+                               <td><?php echo htmlspecialchars($order['transaction_id']);?></td>
 							</tr>
 
 

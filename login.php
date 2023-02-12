@@ -1,7 +1,6 @@
 
-
-
-<?php      
+<?php   
+    include ('limit_traffic.php');   
      include ('db_connection/db_connection.php');
 include ('utils.php');
      session_start();

@@ -10,15 +10,17 @@ $ordered_food = array_combine($food_array,$quantity_array);
 
 
 
+
 $name = $_POST['name'];
 $phone_number = $_POST['phone_number'];
 $city = $_POST['city'];
 $address = $_POST['address'];
 $arr_date = $_POST['arr_date'];
 $price = $_POST['price'];
+$transaction_id  = $_POST['transaction_id'];
 
-$sql = "INSERT INTO orders(name,phone_number,city,address,arr_date,price)
-				        VALUES('$name', '$phone_number','$city','$address','$arr_date','$price')";
+$sql = "INSERT INTO orders(name,phone_number,city,address,arr_date,price, transaction_id)
+				        VALUES('$name', '$phone_number','$city','$address','$arr_date','$price', '$transaction_id')";
 
 
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
